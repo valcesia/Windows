@@ -23,7 +23,7 @@ Connect-MsolService
 $sp = New-MsolServicePrincipal -DisplayName 365Service -Type Password -Value Password
 
 # Assign a role to the user
-Add-MsolRoleMember -RoleMemberType ServicePrincipal -RoleName 'User Account Administrator' -RoleMemberObjectId $sp.ObjectId
+Add-MsolRoleMember -RoleMemberType ServicePrincipal -RoleName 'User Administrator' -RoleMemberObjectId $sp.ObjectId
 
 # Copying Service Principal Names to be used into Workspace One Access
 $sp.ServicePrincipalNames
@@ -32,7 +32,7 @@ $sp.ServicePrincipalNames
 Get-MsolDomain
 
 # Define onmicrosoft.com domain as Default
-Set-MsolDomain -Name $365Domain -IsDefault 
+Set-MsolDomain -Name $Domain -IsDefault 
 
 # Set Authentication type for MSOnline Services along with your VMware Workspace One Access environment
 Set-MsolDomainAuthentication `
