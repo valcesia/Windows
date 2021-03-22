@@ -32,7 +32,7 @@ $sp.ServicePrincipalNames
 Get-MsolDomain
 
 # Define onmicrosoft.com domain as Default
-Set-MsolDomain -Name $Domain -IsDefault 
+Set-MsolDomain -Name $365Domain -IsDefault 
 
 # Set Authentication type for MSOnline Services along with your VMware Workspace One Access environment
 Set-MsolDomainAuthentication `
