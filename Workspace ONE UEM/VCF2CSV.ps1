@@ -1,18 +1,22 @@
 <#
 .SYNOPSIS
-Script to convert VCF files exported from Android devices to CSV format. All CSV format was built to use import format accordingly Microsoft Outlook
+Script to convert VCF files exported from Android devices to CSV format. All CSV format was built to use import format according Microsoft Outlook
 
 .DESCRIPTION
-        This script was created for a customer who uses Android Work Managed devices, who don't have a personal Google Account, and needs to migrate VCF 
+        This script was created for a customer who uses Android Work Managed devices, who don't have a personal Google Account and needs to migrate VCF 
         contact information and import them to Microsoft Outlook accounts. Adding user accounts to Microsoft Exchange can prevent customers from losing 
         their contacts, in case of a problem related to the device itself.
 
 .EXAMPLE
         Example of how to run the script:
-        ./vCF2CSV.ps1 -fileName contact.vcf | Export-Csv ./output.csv
+        ./vCF2CSV.ps1 -fileName contact.vcf | Export-Csv ./output.csv 
+
+        or to remove " " from CSV file (to be imported using Exchange On-premises)
+
+        ./vCF2CSV.ps1 -fileName contact.vcf | Export-Csv -UseQuotes Never -Encoding UTF8 ./output.csv
 
 .NOTES
-  Version:        1.0
+  Version:        1.1
   Author:         Thiago Valcesia - thiago.valcesia@broadcom.com
                   
   Creation Date:  03/12/2024
@@ -20,7 +24,7 @@ Script to convert VCF files exported from Android devices to CSV format. All CSV
   Purpose/Change: Develop a script to facilitate migration from VCF files from Android Work Managed devices, which do not have Google Accounts configured
   
 #>
-param($fileName = "/Users/tvalcesia/Documents/teste.vcf")
+param($fileName = "/Users/tvalcesia/Documents/54.vcf")
 
 function New-Card {
     return [PSCustomObject][ordered]@{'First Name'='';'Middle Name'='';'Last Name'='';'Name'='';'Home Phone'='';'Home Phone 2'='';'Business Phone'='';'Business Phone 2'='';'Mobile Phone'='';'Car Phone'='';'Other Phone'='';'Company'='';'Notes'=''}
