@@ -1,5 +1,5 @@
-# Description: Provides a comma-separated list of the Windows 11 hardware requirements that are not met on the device.
-    ## Possible results include: Storage, Memory, TPM, Processor, SecureBoot.
+# Description: Represents whether the device meets the minimum system requirements for Windows 11
+    ## Possible results include: CAPABLE, NOT CAPABLE, UNDETERMINED, and FAILED TO RUN.
     ## Based on script from https://techcommunity.microsoft.com/blog/microsoftendpointmanagerblog/understanding-readiness-for-windows-11-with-microsoft-endpoint-manager/2770866
 # Execution Context: SYSTEM
 # Execution Architecture: 64BIT
@@ -470,5 +470,5 @@ Switch ($outObject.returnCode) {
     -2 { $outObject.returnResult = $FAILED_TO_RUN_STRING }
 }
 
-$returnResult = $outObject.returnResult 
-return $returnResult  
+$returnReason = $outObject.returnReason 
+return $returnReason
